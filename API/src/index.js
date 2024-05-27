@@ -9,57 +9,59 @@ let peliculas = [
   {
     id: 0,
     titulo: "Rocky",
-    protagonista: "",
+    protagonista:
+      "Sylvester Stallone, Talia Shire, Burt Young, Carl Weathers, Burgess Meredith, Mr. T",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
-    categoria: "",
-    urlVideo: "",
-    epoca: "",
+      "Rocky III continúa la saga del icónico boxeador Rocky Balboa (Sylvester Stallone). Tras su victoria sobre Apollo Creed y el logro del título de campeón mundial de peso pesado, Rocky disfruta de la fama y el éxito. Ha defendido su título con éxito varias veces y lleva una vida de lujo junto a su esposa Adrian (Talia Shire) y su hijo.",
+    categoria: "Drama, Deporte",
+    urlVideo: "https://www.youtube.com/watch?v=-Hk-LYcavrw",
+    epoca: "80",
     imgLink:
       "https://classicposters.co.uk/cdn/shop/products/rocky-1976-classic-movie-poster-classic-posters.jpg?v=1657583102",
   },
   {
     id: 1,
     titulo: "Topgun",
-    protagonista: "",
+    protagonista: "Tom Cruise",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
-    categoria: "",
-    urlVideo: "",
-    epoca: "",
+      "El joven piloto Maverick Mitchell acude a una prestigiosa escuela aérea, famosa por formar a los mejores pilotos de combate del país. Maverick se siente atraído por su hermosa instructora, mientras desarrolla una intensa rivalidad con otro piloto",
+    categoria: "Acción,Drama,Romance",
+    urlVideo: "https://www.youtube.com/watch?v=xa_z57UatDY",
+    epoca: "80",
     imgLink: "https://m.media-amazon.com/images/I/91u++CxhrQL.jpg",
   },
   {
     id: 2,
-    titulo: "Rambo II",
-    protagonista: "",
+    titulo: "Depredador",
+    protagonista: "Arnold Schwarzenegger",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
-    categoria: "",
-    urlVideo: "",
-    epoca: "",
+      "Depredador es una película de acción y ciencia ficción que sigue al mayor Alan Dutch Schaefer (Arnold Schwarzenegger), quien lidera un equipo de operaciones especiales en una misión de rescate en la selva centroamericana. El equipo, compuesto por soldados altamente entrenados, es enviado para salvar a un grupo de rehenes de las guerrillas. Sin embargo, pronto descubren que no están solos en la selva.",
+    categoria: "Accion",
+    urlVideo: "https://www.youtube.com/watch?v=NICzpXtD-A0",
+    epoca: "80",
     imgLink: "https://i.ebayimg.com/images/g/h8YAAOSw3ydV4OJ5/s-l1600.jpg",
   },
   {
     id: 3,
-    titulo: "He-man",
-    protagonista: "",
+    titulo: "Forrest Gump",
+    protagonista: "Tom Hanks",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
-    categoria: "",
-    urlVideo: "",
-    epoca: "",
+      "La historia sigue la vida de Forrest Gump, un hombre con discapacidad intelectual, desde su infancia en Alabama hasta su vida adulta, durante la cual se convierte en parte de importantes eventos históricos de Estados Unidos.",
+    categoria: "Drama,Romance,Comedia",
+    urlVideo: "https://www.youtube.com/watch?v=bLvqoHBptjg",
+    epoca: "90",
     imgLink:
       "https://ih1.redbubble.net/image.2307196844.0965/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
   },
   {
     id: 4,
-    titulo: "Godzilla",
-    protagonista: "",
-    description: "",
-    categoria: "",
-    urlVideo: "",
-    epoca: "",
+    titulo: "The Lord of the Rings: The Fellowship of the Ring",
+    protagonista: "Elijah Wood",
+    description:
+      "La historia sigue a un joven hobbit llamado Frodo Bolsón, quien hereda un anillo mágico de su tío Bilbo. Pronto descubre que este anillo es el Anillo Único, un artefacto poderoso que puede otorgar el control total sobre la Tierra Media a su portador, pero que también atrae la atención del oscuro señor Sauron, quien busca recuperarlo para sumir al mundo en la oscuridad. Frodo se embarca en una peligrosa misión para destruir el anillo, uniéndose a un grupo diverso de compañeros, conocido como la Compañía del Anillo, compuesto por humanos, elfos, enanos y otros hobbits.",
+    categoria: "Aventura,Fantacia,Romance",
+    urlVideo: "https://www.youtube.com/watch?v=V75dMMIW2B4",
+    epoca: "2000",
     imgLink:
       "https://artofthemovies.co.uk/cdn/shop/products/IMG_9850.jpg?v=1666278379",
   },
@@ -87,13 +89,13 @@ app.put("/peliculas/:id", async (req, res) => {
 
 app.delete("/peliculas/:id", (req, res) => {
   const { id } = req.params;
-  const findID = peliculas.findIndex((t) => t.id === id)
+  const findID = peliculas.findIndex((t) => t.id === id);
 
-  if(findID !== -1){
+  if (findID !== -1) {
     peliculas.splice(findID, 1);
-    res.status(201).send("Pelicula eliminada")
-  }else{
-    res.status(404).send("No se encontro la pelicula")
+    res.status(201).send("Pelicula eliminada");
+  } else {
+    res.status(404).send("No se encontro la pelicula");
   }
 });
 
