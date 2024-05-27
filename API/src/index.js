@@ -11,10 +11,7 @@ const structure = {
   protagonista: '',
   categoria: '',
   urlVideo: '',
-  urlImage: {
-    normalSize: '',
-    bigSize: ''
-  }
+  urlImage: ''
 }
 
 app.use(cors());
