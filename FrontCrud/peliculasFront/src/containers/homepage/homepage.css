@@ -1,0 +1,105 @@
+.cards__container--large {
+    background: #0e0e0e;
+    color: #d9d9d9;
+    border-radius: 15px;
+}
+
+.movie__info__container--large {
+    display: flex;
+}
+
+.movie__info__container--large > picture {
+    display: flex;
+    align-items: center;
+}
+
+.movie__info__container--large > picture > img {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.card__img--large {
+    object-fit: cover;
+    width: 400px;
+}
+
+.movie__metadata__container--large {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.movie__metadata__container--large > h1 {
+    margin-top: 4rem;
+}
+
+.movie__metadata__container--large > p {
+    color: #9f9e9e;
+}
+
+/* cards */
+.cards__section__header {
+    margin-top: 4rem;
+}
+
+.cards__header {
+    margin-bottom: 2rem;
+}
+
+.card__container {
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background-color: #fff;
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.card > picture {
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+}
+
+.card > section {
+    padding: 10px 25px;
+}
+
+.card__metadata {
+    display: none; /* Hide expanded info by default */
+    position: absolute;
+    top: 0%; /* Position below the card */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+}
+
+.card:hover .card__metadata {
+    display: flex;
+    position: absolute;
+    width: 700px;
+    height: 400px;
+    z-index: 10;
+
+}
+
+
+
+.card__img {
+    object-fit: contain;
+    width: 250px;
+    height: 350px;
+}
+
+.cards__displayer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 9rem;
+    position: relative; 
+}
+
+.card__container:hover {
+    z-index: 10; 
+}
