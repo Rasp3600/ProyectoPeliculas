@@ -2,20 +2,68 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const Port = 4000;
-let peliculas = [];
-
-const structure = {
-  id: "",
-  titulo: "",
-  protagonista: "",
-  categoria: "",
-  urlVideo: "",
-  urlImage: "",
-};
-
 app.use(cors());
 app.use(express.json());
+const Port = 4000;
+let peliculas = [
+  {
+    id: 0,
+    titulo: "Rocky",
+    protagonista: "",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
+    categoria: "",
+    urlVideo: "",
+    epoca: "",
+    imgLink:
+      "https://classicposters.co.uk/cdn/shop/products/rocky-1976-classic-movie-poster-classic-posters.jpg?v=1657583102",
+  },
+  {
+    id: 1,
+    titulo: "Topgun",
+    protagonista: "",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
+    categoria: "",
+    urlVideo: "",
+    epoca: "",
+    imgLink: "https://m.media-amazon.com/images/I/91u++CxhrQL.jpg",
+  },
+  {
+    id: 2,
+    titulo: "Rambo II",
+    protagonista: "",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
+    categoria: "",
+    urlVideo: "",
+    epoca: "",
+    imgLink: "https://i.ebayimg.com/images/g/h8YAAOSw3ydV4OJ5/s-l1600.jpg",
+  },
+  {
+    id: 3,
+    titulo: "He-man",
+    protagonista: "",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, nisi.",
+    categoria: "",
+    urlVideo: "",
+    epoca: "",
+    imgLink:
+      "https://ih1.redbubble.net/image.2307196844.0965/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+  },
+  {
+    id: 4,
+    titulo: "Godzilla",
+    protagonista: "",
+    description: "",
+    categoria: "",
+    urlVideo: "",
+    epoca: "",
+    imgLink:
+      "https://artofthemovies.co.uk/cdn/shop/products/IMG_9850.jpg?v=1666278379",
+  },
+];
 
 app.get("/peliculas", (req, res) => {
   res.json(peliculas);
