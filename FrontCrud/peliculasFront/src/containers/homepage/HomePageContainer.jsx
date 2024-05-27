@@ -67,8 +67,8 @@ export default function HomePageContainer() {
                         <picture>
                             <img className='card__img' src={movie.imgLink} alt="" />
                         </picture>
-                            <h3>{movie.tite}</h3>
                             <div>
+                                <h3>{movie.tite}</h3>
                                 <p>{movie.description}</p>
                             </div>
                         </section>
