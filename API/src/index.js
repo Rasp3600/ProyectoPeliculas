@@ -85,7 +85,17 @@ app.put("/peliculas/:id", async (req, res) => {
   res.status(201).json("Peli actualizada");
 });
 
-app.delete("/peliculas/:id", (req, res) => {});
+app.delete("/peliculas/:id", (req, res) => {
+  const { id } = req.params;
+  const findID = peliculas.findIndex((t) => t.id === id)
+
+  if(findID !== -1){
+    peliculas.splice(findID, 1);
+    res.status(201).send("Pelicula eliminada")
+  }else{
+    res.status(404).send("No se encontro la pelicula")
+  }
+});
 
 app.listen(Port, () => console.log(`server runnin on Port: ${Port}`));
 
