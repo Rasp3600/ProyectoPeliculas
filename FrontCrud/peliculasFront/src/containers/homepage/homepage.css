@@ -80,12 +80,8 @@
     display: flex;
     position: absolute;
     width: 700px;
-    height: 400px;
     z-index: 10;
-
 }
-
-
 
 .card__img {
     object-fit: contain;
