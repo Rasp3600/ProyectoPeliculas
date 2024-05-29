@@ -7,14 +7,11 @@ import updateIcon from '../../assets/update-icon.svg'
 import closeIcon from '../../assets/close-icon.svg'
 import { v4 as uuidv4 } from 'uuid' 
 
-
 export default function HomePageContainer() {
-  const testImg =
-    "https://images.fineartamerica.com/images/artworkimages/medium/3/7-alien-movie-poster-alien-1979-jean-darmel.jpg";
-  const [peliculas, setPeliculas] = useState([]);
   const [currentElemId, setCurrentElemId] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [peliculas, setPeliculas] = useState([])
   const refTitulo = useRef()
   const refProtagonista = useRef()
   const refDescripcion = useRef()
@@ -22,15 +19,8 @@ export default function HomePageContainer() {
   const refUrlTrailer = useRef()
   const refEpoca = useRef()
   const refLinkPortada = useRef()
-  const testTitle = "Alien";
-  const testDesc =
-    "La tripulación del remolcador espacial Nostromo atiende una señal de socorro y, sin saberlo, sube a bordo una letal forma de vida extraterrestre";
-
-  useEffect(() => {
-    fetch(`http://localhost:4000/peliculas`)
-      .then((res) => res.json())
-      .then((data) => setPeliculas(data));
-  }, []);
+  const idBannerMovie = Math.floor(Math.random() * peliculas.length)
+  const bannerMovie = Object.keys(peliculas).length > 0 && peliculas[idBannerMovie]
 
   function handleDelete(id) {
     fetch(`http://localhost:4000/peliculas/${id}`, {
@@ -40,7 +30,7 @@ export default function HomePageContainer() {
       }
     })
   }
-
+  
   function handleUpdate(id) {
     const currentMovie = peliculas.find((movie) => movie.id === id)
     fetch(`http://localhost:4000/peliculas/${id}`, {
@@ -63,25 +53,44 @@ export default function HomePageContainer() {
     })
   }
 
+  function handleFindByEpoch() {
+    console.log(refEpoca.current.value)
+    fetch(refEpoca.current.value === "all" ? `http://localhost:4000/peliculas` : `http://localhost:4000/peliculas/${refEpoca.current.value}`)
+    .then(res => res.json())
+    .then(data => setPeliculas(data))
+  }
+
+  useEffect(() => {
+    handleFindByEpoch()
+  }, []);
+
   return (
     <MainLayout>
       <section className="cards__container--large">
         <article className="movie__info__container--large">
           <picture>
-            <img className="card__img--large" src={testImg} alt="" />
+            <img className="card__img--large" src={bannerMovie.imgLink} alt="" />
           </picture>
           <section className="movie__metadata__container--large">
-            <h1>{testTitle}</h1>
-            <p>{testDesc}</p>
+            <h1 className="movie__title">{bannerMovie.titulo}</h1>
+            <p className="movie__description">{bannerMovie.description}</p>
           </section>
         </article>
       </section>
       <section className="cards__container">
         <header className="cards__section__header">
           <h2 className="cards__header">Peliculas disponibles</h2>
+          <select ref={refEpoca} onChange={handleFindByEpoch}>
+            <option value="all" defaultChecked>Buscar por epoca de emision</option>
+            <option value="all">Todas las epocas</option>
+            <option value="80">Epoca de los 80&apos;s</option>
+            <option value="90">Epoca de los 90&apos;s</option>
+            <option value="2000">Epoca de los 2000&apos;s</option>
+          </select>
         </header>
         <section className="cards__displayer">
           {peliculas.map((movie) => (
+            movie.id !== idBannerMovie ?
             <div className="card__container" key={movie.id}>
               <div className="card__more__container">
                   <h3>{movie.titulo}</h3>
@@ -124,10 +133,10 @@ export default function HomePageContainer() {
                       <input ref={refCategoria} type="text" placeholder='Categoria' />
                       <input ref={refUrlTrailer} type="text" placeholder='Url del trailer' />                      
                       <select ref={refEpoca}>
-                        <option value="" defaultValue={null} defaultChecked>Seleccione la epoca de emision</option>
-                        <option value="80's">Epoca de los 80&apos;s</option>
-                        <option value="90's">Epoca de los 90&apos;s</option>
-                        <option value="2000's">Epoca de los 2000&apos;s</option>
+                        <option defaultValue={null} defaultChecked>Seleccione la epoca de emision</option>
+                        <option value="80">Epoca de los 80&apos;s</option>
+                        <option value="90">Epoca de los 90&apos;s</option>
+                        <option value="2000">Epoca de los 2000&apos;s</option>
                       </select>
                       <input ref={refLinkPortada} type="text" placeholder='Link portada de la pelicula' />
                       <button className='form__button' onClick={() => {
@@ -148,12 +157,14 @@ export default function HomePageContainer() {
                       <img className="card__img" src={movie.imgLink} alt="" />
                     </picture>
                     <div>
-                      <h3>{movie.titulo}</h3>
-                      <p>{movie.description}</p>
+                      <h3 className="card__title">{movie.titulo}</h3>
+                      <p className="card__description">{movie.description}</p>
+                      <a href={movie.urlVideo} target="_blank">Trailer</a>
                     </div>
                   </section>
                 </article>
             </div>
+            : ''
           ))}
         </section>
       </section>

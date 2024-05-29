@@ -39,7 +39,7 @@ let peliculas = [
     categoria: "Accion",
     urlVideo: "https://www.youtube.com/watch?v=NICzpXtD-A0",
     epoca: "80",
-    imgLink: "https://i.ebayimg.com/images/g/h8YAAOSw3ydV4OJ5/s-l1600.jpg",
+    imgLink: "https://i.pinimg.com/736x/43/e4/7d/43e47dbe323f21a464c8dc48d352ef73.jpg",
   },
   {
     id: 3,
@@ -51,11 +51,11 @@ let peliculas = [
     urlVideo: "https://www.youtube.com/watch?v=bLvqoHBptjg",
     epoca: "90",
     imgLink:
-      "https://ih1.redbubble.net/image.2307196844.0965/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+      "https://m.media-amazon.com/images/I/61-F9rv7RvL._AC_UF1000,1000_QL80_.jpg",
   },
   {
     id: 4,
-    titulo: "The Lord of the Rings: The Fellowship of the Ring",
+    titulo: "The Lord of the Rings",
     protagonista: "Elijah Wood",
     description:
       "La historia sigue a un joven hobbit llamado Frodo Bolsón, quien hereda un anillo mágico de su tío Bilbo. Pronto descubre que este anillo es el Anillo Único, un artefacto poderoso que puede otorgar el control total sobre la Tierra Media a su portador, pero que también atrae la atención del oscuro señor Sauron, quien busca recuperarlo para sumir al mundo en la oscuridad. Frodo se embarca en una peligrosa misión para destruir el anillo, uniéndose a un grupo diverso de compañeros, conocido como la Compañía del Anillo, compuesto por humanos, elfos, enanos y otros hobbits.",
@@ -63,8 +63,19 @@ let peliculas = [
     urlVideo: "https://www.youtube.com/watch?v=V75dMMIW2B4",
     epoca: "2000",
     imgLink:
-      "https://artofthemovies.co.uk/cdn/shop/products/IMG_9850.jpg?v=1666278379",
-  },
+      "https://m.media-amazon.com/images/I/81EBp0vOZZL._AC_UF894,1000_QL80_.jpg",
+  },{
+    id: 5,
+    titulo: "Alien el octavo pasajero",
+    protagonista: "Alien UWU",
+    description: "La nave comercial Nostromo y su tripulación, siete hombres y mujeres, se disponen a volver a la Tierra transportando un cargamento de mineral importante. Pero cuando se detienen forzosamente en un planeta desierto, el oficial Kane es repentinamente atacado por una forma de vida desconocida, un arácnido que se adhiere a su cara. Después de que al doctor se le retire el espécimen con ayuda de todos, la tripulación se queda más tranquila y cenan juntos. Justo entonces, Kane empieza a sufrir arcadas y convulsiones y ve cómo su abdomen es perforado por un cuerpo extraño vivo, que se escapa por el pasillo de la nave. Se encuentran en medio del espacio exterior y en compañía de un alienígena. El misterioso huésped resulta ser una despiadada máquina de matar que siembra el pánico y acaba con la tripulación lentamente. La Doctora Ripley, uno de los tripulantes, acabará erigiéndose inesperadamente como la única rival a la altura del monstruo, con quien luchará hasta las últimas consecuencias.",
+    categoria: "Terror, Ciencia ficción",
+    urlVideo: "https://youtu.be/jQ5lPt9edzQ?si=ScbcH5F6rkQTV4Ig",
+    epoca: "80",
+    imgLink:
+    "https://www.mubis.es/media/users/12957/188284/poster-de-alien-el-octavo-pasajero-original.jpg",
+  },{
+  }
 ];
 
 app.get("/peliculas", (req, res) => {
@@ -72,7 +83,7 @@ app.get("/peliculas", (req, res) => {
 });
 
 app.get("/peliculas/:epoca", (req, res) => {
-  const movies = peliculas.filter((movie) => movie.epoca === req.params.id)
+  const movies = peliculas.filter((movie) => movie.epoca === req.params.epoca)
   res.status(200).json(movies)
 });
 
