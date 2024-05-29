@@ -69,7 +69,10 @@ app.get("/peliculas", (req, res) => {
   res.json(peliculas);
 });
 
-app.get("/peliculas/:epoca", (req, res) => {});
+app.get("/peliculas/:epoca", (req, res) => {
+  const movies = peliculas.filter((movie) => movie.epoca === req.params.id)
+  res.status(200).json(movies)
+});
 
 app.post(`/peliculas`, async (req, res) => {
   const newpeli = req.body;

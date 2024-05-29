@@ -57,6 +57,20 @@
     z-index: 1;
 }
 
+.card__moreicon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.card__more__container {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 25px;
+}
+
 .card > picture {
     display: flex;
     align-items: center;
