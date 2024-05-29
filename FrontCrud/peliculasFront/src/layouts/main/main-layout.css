@@ -68,3 +68,7 @@
 .form__container--hidden {
     display: none;
 }
+
+.main__footer {
+    height: 4rem;
+}

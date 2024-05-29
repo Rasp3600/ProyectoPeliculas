@@ -80,6 +80,9 @@ export default function MainLayout({children}) {
     <main className='main__container'>
         {children}
     </main>
+    <footer className='main__footer'>
+
+    </footer>
     </>
   )
 }

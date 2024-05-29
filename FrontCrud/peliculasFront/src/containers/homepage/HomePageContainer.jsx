@@ -64,6 +64,8 @@ export default function HomePageContainer() {
     handleFindByEpoch()
   }, []);
 
+  // ! bug: encontrar el bug que hace que al darle click a el boton de "mas" en las cards
+  // ! provoque un windows reload
   return (
     <MainLayout>
       <section className="cards__container--large">
@@ -74,26 +76,26 @@ export default function HomePageContainer() {
           <section className="movie__metadata__container--large">
             <h1 className="movie__title">{bannerMovie.titulo}</h1>
             <p className="movie__description">{bannerMovie.description}</p>
+            <a className="movie__trailer" href={bannerMovie.urlVideo}>Trailer</a>
           </section>
         </article>
       </section>
       <section className="cards__container">
         <header className="cards__section__header">
           <h2 className="cards__header">Peliculas disponibles</h2>
-          <select ref={refEpoca} onChange={handleFindByEpoch}>
+          <select className="cards__epoch__selection" ref={refEpoca} onChange={handleFindByEpoch}>
             <option value="all" defaultChecked>Buscar por epoca de emision</option>
-            <option value="all">Todas las epocas</option>
             <option value="80">Epoca de los 80&apos;s</option>
             <option value="90">Epoca de los 90&apos;s</option>
             <option value="2000">Epoca de los 2000&apos;s</option>
           </select>
         </header>
         <section className="cards__displayer">
-          {peliculas.map((movie) => (
+          {peliculas.filter((movie) => movie.id !== idBannerMovie.id).map(movie => (
             movie.id !== idBannerMovie ?
             <div className="card__container" key={movie.id}>
               <div className="card__more__container">
-                  <h3>{movie.titulo}</h3>
+                  <h3 className="card__title">{movie.titulo}</h3>
                   <button className="card__moreicon" onClick={() => {
                     setCurrentElemId(movie.id)
                     setIsVisible(true)
@@ -148,7 +150,7 @@ export default function HomePageContainer() {
                     : ''
 
                 }
-                  <article className="card">
+                <article className="card">
                   <picture>
                     <img className="card__img" src={movie.imgLink} alt="" />
                   </picture>
@@ -156,10 +158,13 @@ export default function HomePageContainer() {
                     <picture>
                       <img className="card__img" src={movie.imgLink} alt="" />
                     </picture>
-                    <div>
-                      <h3 className="card__title">{movie.titulo}</h3>
+                    <div className="card__info">
+                      <h3>{movie.titulo}</h3>
                       <p className="card__description">{movie.description}</p>
-                      <a href={movie.urlVideo} target="_blank">Trailer</a>
+                      <p className="card__detail card__cast">Elenco: {movie.protagonista}</p>
+                      <p className="card__detail">Categorias {movie.categoria}</p>
+                      <p className="card__detail">Epoca emision: {movie.epoca}</p>
+                      <a className="card__trailer" href={movie.urlVideo} target="_blank">Trailer</a>
                     </div>
                   </section>
                 </article>

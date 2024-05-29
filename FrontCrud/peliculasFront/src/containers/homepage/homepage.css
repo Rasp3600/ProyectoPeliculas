@@ -5,14 +5,28 @@
 }
 
 .movie__title {
-    line-height: 1;
+    line-height: 1.1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;    /* Número de líneas antes de truncar */
+    overflow: hidden;
 }
 
 .movie__description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;    /* Número de líneas antes de truncar */
+    -webkit-line-clamp: 4;    /* Número de líneas antes de truncar */
     overflow: hidden;
+}
+
+.movie__trailer {
+    padding-top: 1rem;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 25px;
+    background-color: rgb(226, 78, 78);
+    color: #d9d9d9;
+    text-decoration: none;
 }
 
 .movie__info__container--large {
@@ -32,6 +46,7 @@
 .card__img--large {
     object-fit: cover;
     width: 400px;
+    height: 600px;
 }
 
 .movie__metadata__container--large {
@@ -54,6 +69,12 @@
 
 .cards__header {
     margin-bottom: 2rem;
+}
+
+.cards__epoch__selection {
+    margin-bottom: 1.5rem;
+    outline: 2px solid #ecebeb;
+    padding: 15px 5px;
 }
 
 .card__container {
@@ -104,14 +125,17 @@
 .card:hover .card__metadata {
     display: flex;
     position: absolute;
-    width: 550px;
+    width: 570px;
     z-index: 10;
-    border-radius: 10px;
-    outline: 2px solid #d9d9d9;
+    outline: 2px solid #e6e5e5;
     box-sizing: border-box;
 }
 
-.card__img {
+.card__info {
+    padding: 0 25px;
+}
+
+.card__img {    
     object-fit: contain;
     width: 250px;
     height: 350px;
@@ -120,15 +144,37 @@
 .card__title {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 1;    /* Número de líneas antes de truncar */
     overflow: hidden;
 }
 
 .card__description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;    /* Número de líneas antes de truncar */
+    -webkit-line-clamp: 3;    /* Número de líneas antes de truncar */
     overflow: hidden;
+}
+
+.card__detail {
+    font-size: 15px;
+    color: #292929;
+}
+
+.card__cast {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;    /* Número de líneas antes de truncar */
+    overflow: hidden;   
+}
+
+.card__trailer {
+    padding-top: 1rem;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: rgb(226, 78, 78);
+    color: #0e0e0e;
+    text-decoration: none;
 }
 
 .cards__displayer {

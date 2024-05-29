@@ -74,7 +74,6 @@ let peliculas = [
     epoca: "80",
     imgLink:
     "https://www.mubis.es/media/users/12957/188284/poster-de-alien-el-octavo-pasajero-original.jpg",
-  },{
   }
 ];
 
