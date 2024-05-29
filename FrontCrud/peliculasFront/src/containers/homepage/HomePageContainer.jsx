@@ -12,6 +12,8 @@ export default function HomePageContainer() {
   const [isVisible, setIsVisible] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [peliculas, setPeliculas] = useState([])
+  const [bannerMovie, setBannerMovie] = useState({})
+  const [idBannerMovie, setIdBannerMovie] = useState(null)
   const refTitulo = useRef()
   const refProtagonista = useRef()
   const refDescripcion = useRef()
@@ -19,9 +21,7 @@ export default function HomePageContainer() {
   const refUrlTrailer = useRef()
   const refEpoca = useRef()
   const refLinkPortada = useRef()
-  const idBannerMovie = Math.floor(Math.random() * peliculas.length)
-  const bannerMovie = Object.keys(peliculas).length > 0 && peliculas[idBannerMovie]
-
+  
   function handleDelete(id) {
     fetch(`http://localhost:4000/peliculas/${id}`, {
       method: 'DELETE',
@@ -63,7 +63,11 @@ export default function HomePageContainer() {
   useEffect(() => {
     handleFindByEpoch()
   }, []);
-
+  
+  useEffect(() => {
+    setIdBannerMovie(Math.floor(Math.random() * peliculas.length))
+    setBannerMovie(Object.keys(peliculas).length > 0 && peliculas[idBannerMovie])
+  }, [idBannerMovie, peliculas])
   // ! bug: encontrar el bug que hace que al darle click a el boton de "mas" en las cards
   // ! provoque un windows reload
   return (
