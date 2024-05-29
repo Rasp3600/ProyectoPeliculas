@@ -102,13 +102,13 @@ app.put("/peliculas/:id", async (req, res) => {
 
 app.delete("/peliculas/:id", (req, res) => {
   const { id } = req.params;
-  const findID = peliculas.findIndex((t) => t.id === id);
+  const findID = peliculas.findIndex((t) => t.id == id);
 
   if (findID !== -1) {
     peliculas.splice(findID, 1);
-    res.status(201).send("Pelicula eliminada");
+    res.status(201).json("Pelicula eliminada");
   } else {
-    res.status(404).send("No se encontro la pelicula");
+    res.status(404).json("No se encontro la pelicula");
   }
 });
 
